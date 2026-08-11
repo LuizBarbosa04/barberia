@@ -4,7 +4,45 @@ body {
 }
 
 header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: #111;
     color: white;
     padding: 20px;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+#inicio {
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px;
+}
+
+#inicio h2 {
+    font-size: 48px;
+    margin: 0;
+}
+
+#inicio p {
+    font-size: 20px;
+}
+
+#inicio a {
+    width: fit-content;
+    background-color: #111;
+    color: white;
+    padding: 12px 20px;
+    text-decoration: none;
 }
