@@ -46,3 +46,53 @@ nav a {
     padding: 12px 20px;
     text-decoration: none;
 }
+
+#servicos {
+    padding: 60px 40px;
+}
+
+.servicos-lista {
+    display: flex;
+    gap: 20px;
+}
+
+.servico-lista article {
+    flex: 1;
+    padding: 25px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: transform 0.2s ease;
+}
+
+.servico-lista article:hover {
+    transform: translateY(-5px);
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    nav {
+        flex-wrap: wrap;
+    }
+
+    #inicio {
+        min-height: 400px;
+        padding: 30px 20px;
+    }
+
+    #inicio h2 {
+        font-size: 36px;
+    }
+
+    #servicos {
+        padding: 40px 20px;
+    }
+
+    .servicos-lista {
+        flex-direction: column;
+    }
+}
