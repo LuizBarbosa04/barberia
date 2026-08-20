@@ -100,15 +100,14 @@ h2 {
 }
 
 #inicio a,
-#contato a {
+.contato-links a {
     background-color: #b08d57;
     color: white;
 }
 
 #inicio a:hover,
-#contato a:hover {
+.contato-links a:hover {
     background-color: #8f7045;
-    opacity: 1;
 }
 
 #servicos {
@@ -167,6 +166,18 @@ h2 {
     margin: 8px 0;
 }
 
+.mapa-link {
+    display: inline-block;
+    margin-top: 10px;
+    color: #8f7045;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.mapa-link:hover {
+    text-decoration: underline;
+}
+
 .contato-links {
     display: flex;
     gap: 15px;
@@ -181,8 +192,10 @@ h2 {
     text-decoration: none;
 }
 
-.contato-links span {
-    font-size: 18px;
+.contato-links svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
 }
 
 footer {
