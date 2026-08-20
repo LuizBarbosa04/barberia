@@ -3,13 +3,22 @@ body {
     font-family: Arial, sans-serif;
 }
 
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
 header {
+    background-color: #111;
+    color: white;
+    padding: 20px 0;
+}
+
+.header-conteudo {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #111;
-    color: white;
-    padding: 20px;
 }
 
 nav {
@@ -22,12 +31,19 @@ nav a {
     text-decoration: none;
 }
 
-#inicio {
+nav a:hover {
+    opacity: 0.7;
+}
+
+.inicio-layout {
     min-height: 500px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 40px;
+    align-items: center;
+    gap: 40px;
+}
+
+.inicio-conteudo {
+    flex: 1;
 }
 
 #inicio h2 {
@@ -47,8 +63,25 @@ nav a {
     text-decoration: none;
 }
 
+#inicio img {
+    width: 45%;
+    max-width: 600px;
+    border-radius: 8px;
+}
+
+#inicio a:hover,
+#contato a:hover {
+    opacity: 0.85;
+}
+
 #servicos {
-    padding: 60px 40px;
+    padding: 60px 0;
+}
+
+#servicos h2,
+#sobre h2,
+#contato h2 {
+    margin-top: 0;
 }
 
 .servicos-lista {
@@ -61,6 +94,7 @@ nav a {
     padding: 25px;
     border: 1px solid #ddd;
     border-radius: 8px;
+    background-color: white;
     transition: transform 0.2s ease;
 }
 
@@ -69,7 +103,7 @@ nav a {
 }
 
 #sobre {
-    padding: 60px 40px;
+    padding: 60px 0;
     background-color: #f5f5f5;
 }
 
@@ -79,7 +113,7 @@ nav a {
 }
 
 #contato {
-    padding: 60px 40px;
+    padding: 60px 0;
 }
 
 #contato a {
@@ -92,7 +126,7 @@ nav a {
 }
 
 @media (max-width: 768px) {
-    header {
+    .header-conteudo {
         flex-direction: column;
         align-items: flex-start;
         gap: 20px;
@@ -102,28 +136,29 @@ nav a {
         flex-wrap: wrap;
     }
 
-    #inicio {
+    .inicio-layout {
         min-height: 400px;
-        padding: 30px 20px;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 30px 0;
     }
 
     #inicio h2 {
         font-size: 36px;
     }
 
-    #servicos {
-        padding: 40px 20px;
+    #inicio img {
+        width: 100%;
+        max-width: none;
+    }
+
+    #servicos,
+    #sobre,
+    #contato {
+        padding: 40px 0;
     }
 
     .servicos-lista {
         flex-direction: column;
-    }
-
-    #sobre {
-        padding: 40px 20px;
-    }
-
-    #contato {
-        padding: 40px 20px;
     }
 }
