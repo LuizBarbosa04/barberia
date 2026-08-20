@@ -83,6 +83,12 @@ nav a:hover {
     font-size: 20px;
 }
 
+.inicio-acoes {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+}
+
 #inicio a {
     width: fit-content;
     padding: 12px 20px;
@@ -110,6 +116,17 @@ h2 {
     background-color: #8f7045;
 }
 
+#inicio .botao-secundario {
+    background-color: transparent;
+    color: #8f7045;
+    border: 1px solid #8f7045;
+}
+
+#inicio .botao-secundario:hover {
+    background-color: #8f7045;
+    color: white;
+}
+
 #servicos {
     padding: 60px 0;
 }
@@ -128,6 +145,8 @@ h2 {
 
 .servicos-lista article {
     flex: 1;
+    display: flex;
+    flex-direction: column;
     padding: 25px;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -142,6 +161,21 @@ h2 {
 .servicos-lista h3 {
     font-size: 22px;
     margin-top: 0;
+}
+
+.servicos-lista article p {
+    flex: 1;
+}
+
+.servicos-lista article a {
+    width: fit-content;
+    color: #8f7045;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.servicos-lista article a:hover {
+    text-decoration: underline;
 }
 
 #sobre {
@@ -229,6 +263,10 @@ footer p {
 
     #inicio h2 {
         font-size: 36px;
+    }
+
+    .inicio-acoes {
+        flex-wrap: wrap;
     }
 
     #inicio img {
