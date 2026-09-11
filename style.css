@@ -312,6 +312,15 @@ footer p {
     .contato-links {
         flex-wrap: wrap;
     }
+
+    .layout-duplo {
+        flex-direction: column;
+    }
+
+    .layout-duplo .conteudo-texto,
+    .layout-duplo .conteudo-midia {
+        min-width: 0;
+    }
 }
 
 .espacamento-sessao {
