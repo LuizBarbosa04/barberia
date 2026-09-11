@@ -187,8 +187,16 @@ h2 {
     margin-top: 0;
 }
 
-.servicos-lista article p {
+.servicos-lista article > p {
     flex: 1;
+}
+
+.servico-detalhes {
+    margin-bottom: 20px;
+}
+
+.servico-detalhes p {
+    margin: 4px 0;
 }
 
 .servicos-lista article a {
