@@ -59,6 +59,11 @@ nav a {
     text-decoration: none;
 }
 
+nav a.pagina-atual {
+    color: #b08d57;
+    border-bottom: 2px solid #b08d57;
+}
+
 nav a:hover {
     opacity: 0.7;
 }
