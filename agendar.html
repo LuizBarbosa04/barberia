@@ -3,49 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Agende seu horário na Barberia pelo WhatsApp.">
-    <title>Barberia - Agendar</title>
+    <meta name="description" content="Solicite seu horário na Barberia pelo WhatsApp de forma rápida.">
+    <meta name="theme-color" content="#11100e">
+    <title>Agendar | Barberia</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <header>
-        <div class="container header-conteudo">
-            <div>
-                <h1>Barberia</h1>
-                <p>Estilo, tradição e cuidado.</p>
-            </div>
+    <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+    <header class="cabecalho"><div class="container cabecalho-conteudo"><a class="marca" href="index.html" aria-label="Barberia - página inicial"><span class="marca-simbolo" aria-hidden="true">B</span><span><strong>BARBERIA</strong><small>Estilo, tradição e cuidado</small></span></a><button class="menu-botao" type="button" aria-expanded="false" aria-controls="menu-principal"><span class="sr-only">Abrir menu</span><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span></button><nav id="menu-principal" class="menu-principal" aria-label="Navegação principal"><a href="index.html">Início</a><a href="servicos.html">Serviços</a><a href="agendar.html" aria-current="page">Agendar</a><a href="sobre.html">Sobre</a></nav></div></header>
 
-            <nav>
-                <a href="index.html">Início</a>
-                <a href="servicos.html">Serviços</a>
-                <a href="agendar.html" class="pagina-atual" aria-current="page">Agendar</a>
-                <a href="sobre.html">Sobre</a>
-            </nav>
-        </div>
-    </header>
-
-    <main>
-        <section id="contato">
-            <div class="container">
-                <h2>Agendar Horário</h2>
-                <p>Pronto para dar um tapa no visual? Agende seu horário pelo WhatsApp.</p>
-
-                <div class="contato-links">
-                    <a href="https://wa.me/5500000000000?text=Olá%2C%20gostaria%20de%20agendar%20um%20horário." target="_blank" rel="noopener noreferrer">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.5 0 .2 5.3.2 11.9c0 2.1.6 4.2 1.7 6L0 24l6.3-1.7a12 12 0 0 0 5.8 1.5h.1c6.6 0 11.9-5.3 11.9-11.9 0-3.2-1.3-6.2-3.6-8.4ZM12.2 21.8h-.1a9.9 9.9 0 0 1-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4a9.8 9.8 0 0 1-1.5-5.3c0-5.5 4.5-9.9 9.9-9.9 2.6 0 5.1 1 7 2.9a9.8 9.8 0 0 1 2.9 7c0 5.5-4.4 9.9-9.9 9.9Zm5.4-7.4c-.3-.2-1.8-.9-2-.9-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8 8 0 0 1-2.4-1.5 8.9 8.9 0 0 1-1.7-2.1c-.2-.3 0-.5.1-.6l.5-.6.3-.5c.1-.2.1-.4 0-.6L9.1 7c-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.4-1.2 1.2-1.2 2.9 0 1.7 1.3 3.4 1.5 3.6.2.2 2.5 3.8 6 5.3.8.4 1.5.6 2 .7.8.3 1.6.2 2.2.1.7-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.1-.3-.2-.6-.3Z"/>
-                        </svg>
-                        Agendar via WhatsApp
-                    </a>
-                </div>
+    <main id="conteudo">
+        <section class="pagina-hero pagina-hero-menor"><div class="container pagina-hero-conteudo"><p class="rotulo">Agendamento simples</p><h1>Conte como podemos cuidar do seu visual.</h1><p>Você envia a solicitação pelo WhatsApp e a barbearia confirma a disponibilidade. Nenhum horário é reservado automaticamente.</p></div></section>
+        <section class="secao secao-clara">
+            <div class="container agendamento-grid">
+                <form id="form-agendamento" class="form-agendamento">
+                    <div class="form-cabecalho"><span>01</span><div><h2>Monte sua solicitação</h2><p>Todos os campos com * são obrigatórios.</p></div></div>
+                    <div class="campo"><label for="nome">Seu nome *</label><input id="nome" name="nome" type="text" autocomplete="name" minlength="2" maxlength="80" required placeholder="Como podemos chamar você?"></div>
+                    <div class="campo"><label for="servico">Serviço *</label><select id="servico" name="servico" required><option value="">Selecione uma opção</option><option>Corte</option><option>Barba</option><option>Corte + Barba</option><option>Outro / Quero uma indicação</option></select></div>
+                    <div class="campos-linha"><div class="campo"><label for="data">Data desejada *</label><input id="data" name="data" type="date" required></div><div class="campo"><label for="horario">Horário desejado *</label><input id="horario" name="horario" type="time" min="09:00" max="19:00" required></div></div>
+                    <div class="campo"><label for="observacao">Observação <span>(opcional)</span></label><textarea id="observacao" name="observacao" rows="4" maxlength="240" placeholder="Preferência de corte, barbeiro ou outra informação"></textarea></div>
+                    <p id="mensagem-form" class="mensagem-form" role="status" aria-live="polite"></p>
+                    <button class="botao botao-destaque botao-largo" type="submit">Continuar no WhatsApp <span aria-hidden="true">→</span></button>
+                    <p class="form-nota">Ao continuar, abriremos uma conversa com a mensagem preenchida. O envio só acontece quando você confirmar no WhatsApp.</p>
+                </form>
+                <aside class="agendamento-info">
+                    <p class="rotulo">Como funciona</p><h2>Rápido, direto e sem cadastro.</h2>
+                    <ol><li><span>1</span><div><strong>Preencha sua preferência</strong><p>Escolha serviço, data e horário.</p></div></li><li><span>2</span><div><strong>Envie pelo WhatsApp</strong><p>A mensagem já chega organizada.</p></div></li><li><span>3</span><div><strong>Aguarde a confirmação</strong><p>A equipe confirma ou sugere outro horário.</p></div></li></ol>
+                    <div class="aviso"><strong>Importante</strong><p>A solicitação não garante a vaga até a confirmação da barbearia.</p></div>
+                </aside>
             </div>
         </section>
     </main>
-
-    <footer>
-        <div class="container">
-            <p>© 2026 Barberia. Todos os direitos reservados.</p>
-        </div>
-    </footer>
+    <footer class="rodape"><div class="container rodape-grid"><div><strong>BARBERIA</strong><p>Estilo, tradição e cuidado.</p></div><div><span>Atendimento</span><p>Segunda a sábado<br>9h às 19h</p></div><div><span>Contato</span><a href="sobre.html">Ver endereço</a></div></div><div class="container rodape-base"><p>© <span data-ano></span> Barberia. Todos os direitos reservados.</p><a href="sobre.html">Localização e contato</a></div></footer>
 </body>
 </html>

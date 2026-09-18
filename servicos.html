@@ -3,71 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Conheça os serviços de corte, barba e corte com barba da Barberia.">
-    <title>Barberia - Serviços</title>
+    <meta name="description" content="Conheça os serviços de corte, barba e cuidado completo da Barberia.">
+    <meta name="theme-color" content="#11100e">
+    <title>Serviços | Barberia</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <header>
-        <div class="container header-conteudo">
-            <div>
-                <h1>Barberia</h1>
-                <p>Estilo, tradição e cuidado.</p>
-            </div>
+    <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+    <header class="cabecalho"><div class="container cabecalho-conteudo"><a class="marca" href="index.html" aria-label="Barberia - página inicial"><span class="marca-simbolo" aria-hidden="true">B</span><span><strong>BARBERIA</strong><small>Estilo, tradição e cuidado</small></span></a><button class="menu-botao" type="button" aria-expanded="false" aria-controls="menu-principal"><span class="sr-only">Abrir menu</span><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span></button><nav id="menu-principal" class="menu-principal" aria-label="Navegação principal"><a href="index.html">Início</a><a href="servicos.html" aria-current="page">Serviços</a><a href="agendar.html">Agendar</a><a href="sobre.html">Sobre</a></nav></div></header>
 
-            <nav>
-                <a href="index.html">Início</a>
-                <a href="servicos.html" class="pagina-atual" aria-current="page">Serviços</a>
-                <a href="agendar.html">Agendar</a>
-                <a href="sobre.html">Sobre</a>
-            </nav>
-        </div>
-    </header>
-
-    <main>
-        <section id="servicos">
-            <div class="container">
-                <h2>Nossos Serviços</h2>
-
-                <div class="servicos-lista">
-                    <article>
-                        <h3>Corte</h3>
-                        <p>Corte personalizado de acordo com o seu estilo. Utilizamos técnicas modernas e clássicas.</p>
-                        <div class="servico-detalhes">
-                            <p><strong>Preço:</strong> a definir</p>
-                            <p><strong>Duração:</strong> a definir</p>
-                        </div>
-                        <a href="https://wa.me/5500000000000?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20um%20corte." target="_blank" rel="noopener noreferrer">Agendar corte</a>
-                    </article>
-
-                    <article>
-                        <h3>Barba</h3>
-                        <p>Modelagem, hidratação e acabamento impecável da barba com toalha quente.</p>
-                        <div class="servico-detalhes">
-                            <p><strong>Preço:</strong> a definir</p>
-                            <p><strong>Duração:</strong> a definir</p>
-                        </div>
-                        <a href="https://wa.me/5500000000000?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20barba." target="_blank" rel="noopener noreferrer">Agendar barba</a>
-                    </article>
-
-                    <article>
-                        <h3>Corte + Barba</h3>
-                        <p>Experiência premium completa. Saia pronto para qualquer ocasião.</p>
-                        <div class="servico-detalhes">
-                            <p><strong>Preço:</strong> a definir</p>
-                            <p><strong>Duração:</strong> a definir</p>
-                        </div>
-                        <a href="https://wa.me/5500000000000?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20corte%20%2B%20barba." target="_blank" rel="noopener noreferrer">Agendar corte + barba</a>
-                    </article>
-                </div>
+    <main id="conteudo">
+        <section class="pagina-hero"><div class="container pagina-hero-conteudo"><p class="rotulo">Nosso cardápio</p><h1>Serviços para manter seu estilo em dia.</h1><p>Valores de demonstração. Cada cliente poderá personalizar serviços, preços e duração antes da publicação.</p></div></section>
+        <section class="secao secao-clara">
+            <div class="container servicos-grid">
+                <article class="servico-card"><div class="servico-topo"><span>01</span><p>A partir de <strong>R$ 35</strong></p></div><h2>Corte</h2><p>Corte clássico ou moderno, definido de acordo com seu estilo e formato de rosto.</p><ul><li>Consultoria rápida</li><li>Acabamento na navalha</li><li>Finalização</li></ul><div class="servico-rodape"><span>≈ 40 min</span><a href="agendar.html?servico=Corte">Escolher corte →</a></div></article>
+                <article class="servico-card servico-card-destaque"><div class="servico-topo"><span>02</span><p>A partir de <strong>R$ 60</strong></p></div><div class="mais-pedido">Mais pedido</div><h2>Corte + barba</h2><p>A experiência completa para renovar o visual com harmonia e acabamento preciso.</p><ul><li>Corte personalizado</li><li>Modelagem da barba</li><li>Toalha quente e finalização</li></ul><div class="servico-rodape"><span>≈ 70 min</span><a href="agendar.html?servico=Corte%20%2B%20Barba">Escolher combo →</a></div></article>
+                <article class="servico-card"><div class="servico-topo"><span>03</span><p>A partir de <strong>R$ 30</strong></p></div><h2>Barba</h2><p>Desenho, alinhamento e cuidado para valorizar o formato natural da sua barba.</p><ul><li>Modelagem personalizada</li><li>Toalha quente</li><li>Óleo finalizador</li></ul><div class="servico-rodape"><span>≈ 30 min</span><a href="agendar.html?servico=Barba">Escolher barba →</a></div></article>
             </div>
         </section>
+        <section class="secao faixa-informativa"><div class="container faixa-grid"><div><span>Higiene</span><strong>Materiais preparados a cada atendimento</strong></div><div><span>Conforto</span><strong>Horário solicitado pelo WhatsApp</strong></div><div><span>Transparência</span><strong>Valor confirmado antes do serviço</strong></div></div></section>
+        <section class="secao chamada"><div class="container chamada-conteudo"><div><p class="rotulo">Já escolheu?</p><h2>Envie sua preferência e confirme o melhor horário.</h2></div><a class="botao botao-destaque" href="agendar.html">Solicitar horário</a></div></section>
     </main>
-
-    <footer>
-        <div class="container">
-            <p>© 2026 Barberia. Todos os direitos reservados.</p>
-        </div>
-    </footer>
+    <footer class="rodape"><div class="container rodape-grid"><div><strong>BARBERIA</strong><p>Estilo, tradição e cuidado.</p></div><div><span>Atendimento</span><p>Segunda a sábado<br>9h às 19h</p></div><div><span>Contato</span><a href="agendar.html">Solicitar horário</a></div></div><div class="container rodape-base"><p>© <span data-ano></span> Barberia. Todos os direitos reservados.</p><a href="sobre.html">Localização e contato</a></div></footer>
 </body>
 </html>

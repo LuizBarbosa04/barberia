@@ -3,67 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Conheça a Barberia, sua localização, horários de funcionamento e Instagram.">
-    <title>Barberia - Sobre</title>
+    <meta name="description" content="Conheça a Barberia, nossa proposta, horários e localização.">
+    <meta name="theme-color" content="#11100e">
+    <title>Sobre | Barberia</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <header>
-        <div class="container header-conteudo">
-            <div>
-                <h1>Barberia</h1>
-                <p>Estilo, tradição e cuidado.</p>
-            </div>
+    <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+    <header class="cabecalho"><div class="container cabecalho-conteudo"><a class="marca" href="index.html" aria-label="Barberia - página inicial"><span class="marca-simbolo" aria-hidden="true">B</span><span><strong>BARBERIA</strong><small>Estilo, tradição e cuidado</small></span></a><button class="menu-botao" type="button" aria-expanded="false" aria-controls="menu-principal"><span class="sr-only">Abrir menu</span><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span></button><nav id="menu-principal" class="menu-principal" aria-label="Navegação principal"><a href="index.html">Início</a><a href="servicos.html">Serviços</a><a href="agendar.html">Agendar</a><a href="sobre.html" aria-current="page">Sobre</a></nav></div></header>
 
-            <nav>
-                <a href="index.html">Início</a>
-                <a href="servicos.html">Serviços</a>
-                <a href="agendar.html">Agendar</a>
-                <a href="sobre.html" class="pagina-atual" aria-current="page">Sobre</a>
-            </nav>
-        </div>
-    </header>
-
-    <main>
-        <section id="sobre">
-            <div class="container">
-                <h2>Quem Somos</h2>
-                <p>Uma barbearia criada para oferecer cuidado, estilo e uma experiência de qualidade em cada atendimento. Nossa equipe é formada por profissionais apaixonados pelo ofício, dedicados a entregar muito mais que um simples corte de cabelo: nós entregamos autoestima e tradição.</p>
-                <br>
-                <p>Acompanhe o nosso dia a dia, cortes e novidades em nossa rede social oficial.</p>
-
-                <div class="contato-links">
-                    <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm10.5 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/>
-                        </svg>
-                        Seguir no Instagram
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section id="contato">
-            <div class="container">
-                <h2>Localização e Horários</h2>
-                <p>Venha nos visitar. Estamos sempre de portas abertas para lhe receber com o melhor atendimento.</p>
-
-                <div class="contato-info">
-                    <p><strong>Endereço:</strong> Rua Exemplo, 123 - Centro</p>
-                    <p><strong>Horário de Funcionamento:</strong><br> Segunda a sábado, das 9h às 19h</p>
-
-                    <a class="mapa-link" href="https://www.google.com/maps/search/?api=1&query=Rua+Exemplo+123" target="_blank" rel="noopener noreferrer">
-                        Ver no mapa (Google Maps)
-                    </a>
-                </div>
-            </div>
-        </section>
+    <main id="conteudo">
+        <section class="pagina-hero"><div class="container pagina-hero-conteudo"><p class="rotulo">Nossa essência</p><h1>Tradição no cuidado. Personalidade no resultado.</h1><p>Uma barbearia criada para transformar um serviço do dia a dia em um momento de cuidado e confiança.</p></div></section>
+        <section class="secao secao-clara"><div class="container historia-grid"><div><p class="rotulo">Quem somos</p><h2>Um espaço para se sentir bem.</h2></div><div><p>Nosso trabalho começa com uma boa conversa. Entendemos o que cada cliente procura e unimos técnicas clássicas e atuais para chegar a um resultado autêntico.</p><p>Mais do que seguir tendências, buscamos valorizar o estilo de quem senta em nossa cadeira — com respeito, higiene e atenção aos detalhes.</p></div></div></section>
+        <section class="secao secao-escura"><div class="container contato-grid"><div class="contato-bloco"><p class="rotulo">Venha nos conhecer</p><h2>Localização e horários</h2><div class="info-lista"><div><span>Endereço</span><strong>Rua Exemplo, 123 — Centro</strong></div><div><span>Funcionamento</span><strong>Segunda a sábado, 9h às 19h</strong></div><div><span>Domingo</span><strong>Fechado</strong></div></div><div class="grupo-botoes"><a class="botao botao-destaque" href="https://www.google.com/maps/search/?api=1&amp;query=Rua+Exemplo+123" target="_blank" rel="noopener noreferrer">Abrir no mapa</a><a class="botao botao-contorno-claro" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Ver Instagram</a></div></div><div class="mapa-placeholder"><span aria-hidden="true">⌖</span><strong>Sua barbearia aqui</strong><p>Substitua este bloco por uma foto da fachada ou mapa após definir o cliente.</p></div></div></section>
+        <section class="secao chamada"><div class="container chamada-conteudo"><div><p class="rotulo">Vamos conversar?</p><h2>Seu próximo visual pode começar agora.</h2></div><a class="botao botao-destaque" href="agendar.html">Solicitar horário</a></div></section>
     </main>
-
-    <footer>
-        <div class="container">
-            <p>© 2026 Barberia. Todos os direitos reservados.</p>
-        </div>
-    </footer>
+    <footer class="rodape"><div class="container rodape-grid"><div><strong>BARBERIA</strong><p>Estilo, tradição e cuidado.</p></div><div><span>Atendimento</span><p>Segunda a sábado<br>9h às 19h</p></div><div><span>Contato</span><a href="agendar.html">Solicitar horário</a></div></div><div class="container rodape-base"><p>© <span data-ano></span> Barberia. Todos os direitos reservados.</p><a href="agendar.html">Agendar atendimento</a></div></footer>
 </body>
 </html>

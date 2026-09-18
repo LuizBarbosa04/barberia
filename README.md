@@ -1,46 +1,26 @@
-# Base de site para barbearia
+# Base comercial para site de barbearia
 
-Este projeto é uma base de site estático feita com HTML e CSS para ser adaptada a futuras barbearias.
+Site estático multipágina feito com HTML, CSS e JavaScript puro. Pode ser publicado gratuitamente em serviços como Vercel, Netlify ou GitHub Pages.
 
-## Informações para personalizar
+## Função de cada arquivo
 
-Antes de publicar o site de uma barbearia real, atualize as informações abaixo.
+- `index.html`: apresenta a marca, proposta e diferenciais.
+- `servicos.html`: mostra serviços, preços, duração e leva o serviço escolhido ao agendamento.
+- `agendar.html`: coleta a preferência do cliente e monta uma mensagem organizada no WhatsApp.
+- `sobre.html`: apresenta a história, horários, endereço, mapa e Instagram.
+- `style.css`: concentra todo o visual e a responsividade.
+- `script.js`: controla o menu mobile, ano automático, serviço selecionado, data mínima e envio ao WhatsApp.
 
-### Nome e slogan
+## Personalização obrigatória antes de publicar
 
-Troque `Barberia` e `Estilo, tradição e cuidado.` no cabeçalho e no rodapé de todas as páginas HTML.
+1. Em `script.js`, substitua `5500000000000` pelo WhatsApp real com país e DDD, apenas números.
+2. Troque nome, textos, preços e horários nos quatro arquivos HTML.
+3. Atualize endereço, link do mapa e Instagram em `sobre.html`.
+4. Substitua as imagens da pasta `imagens` por fotos autorizadas da barbearia.
+5. Confira todos os textos e links no celular antes da entrega.
 
-### Cores
+## Como testar
 
-No início de `style.css`, ajuste as variáveis de cores conforme a identidade visual da barbearia.
+Abra `index.html` no navegador ou, com a extensão Live Server no VS Code, clique em **Open with Live Server**.
 
-### Imagens
-
-Substitua as imagens da pasta `imagens` pelas fotos da nova barbearia.
-
-- `imagens/destaque.jpg` é usada na página inicial.
-- `imagens/teste.jpg` é usada na seção sobre autoestima.
-
-Também atualize o texto `alt` das imagens para descrever as novas fotos.
-
-### Serviços e preços
-
-Em `servicos.html`, atualize os nomes, as descrições e os preços dos serviços quando forem definidos.
-
-### WhatsApp
-
-Troque o número `5500000000000` pelos números reais nos links do WhatsApp em `servicos.html` e `agendar.html`.
-
-O número deve conter o código do país, o DDD e o número do WhatsApp, sem espaços, parênteses, traços ou sinal de adição.
-
-### Instagram
-
-Em `sobre.html`, substitua `https://www.instagram.com/` pelo endereço real do Instagram.
-
-### Endereço e horários
-
-Em `sobre.html`, atualize o endereço, os horários de funcionamento e o link do Google Maps.
-
-### Textos institucionais
-
-Revise os textos da página inicial e da página `sobre.html` para que eles reflitam a história, os diferenciais e o atendimento da barbearia.
+O formulário não reserva horários sozinho. Ele envia uma **solicitação** pelo WhatsApp; a barbearia precisa confirmar a vaga. Agenda automática, painel administrativo e banco de dados ficam para uma versão futura com backend.
