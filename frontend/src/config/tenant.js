@@ -20,7 +20,7 @@ export const tenant = {
     { id: 3, title: 'Visual renovado', category: 'Social', image: '/imagens/teste.jpg', position: 'center' }
   ],
   reviews: [
-    { name: 'Cliente da barbearia', text: 'Atendimento organizado, corte bem feito e sem perder tempo esperando.' },
-    { name: 'Cliente recorrente', text: 'Consigo conferir a fila antes de sair de casa. Ficou muito mais prático.' }
+    { id: 1, name: 'Avaliação demonstrativa', text: 'Atendimento organizado, corte bem feito e sem perder tempo esperando.' },
+    { id: 2, name: 'Avaliação demonstrativa', text: 'Consigo conferir a fila antes de sair de casa. Ficou muito mais prático.' }
   ]
 }
