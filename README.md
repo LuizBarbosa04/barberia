@@ -1,46 +1,67 @@
-# Base de site para barbearia
+# Barber Flow
 
-Este projeto é uma base de site estático feita com HTML e CSS para ser adaptada a futuras barbearias.
+Site profissional e fila digital para barbearias de bairro. O cliente vê a fila antes de sair de casa; o barbeiro organiza o atendimento sem depender de listas copiadas no WhatsApp.
 
-## Informações para personalizar
+## O que existe neste marco
 
-Antes de publicar o site de uma barbearia real, atualize as informações abaixo.
+- Frontend React/Vite mobile-first e instalável como PWA.
+- Página pública personalizável por barbearia.
+- Visualização e entrada na fila com nomes anonimizados.
+- API Java 21 + Spring Boot.
+- PostgreSQL com migrações Flyway.
+- WebSocket/STOMP para atualização da fila em tempo real.
+- Estrutura multitenant: todas as consultas da fila usam a barbearia identificada pelo `slug`.
+- Dados demonstrativos para desenvolvimento local.
 
-### Nome e slogan
+Ainda não fazem parte deste marco: login administrativo, painel do barbeiro, comandos chamar/iniciar/finalizar, cancelamento pelo cliente, notificações e deploy definitivo.
 
-Troque `Barberia` e `Estilo, tradição e cuidado.` no cabeçalho e no rodapé de todas as páginas HTML.
+## Estrutura
 
-### Cores
+```text
+frontend/   React, Vite e PWA (Vercel)
+backend/    Java, Spring Boot, REST e WebSocket (Render)
+Neon        PostgreSQL compartilhado com isolamento por tenant_id
+```
 
-No início de `style.css`, ajuste as variáveis de cores conforme a identidade visual da barbearia.
+## Rodar localmente
 
-### Imagens
+Frontend:
 
-Substitua as imagens da pasta `imagens` pelas fotos da nova barbearia.
+```bash
+cd frontend
+cp .env.example .env
+npm install
+npm run dev
+```
 
-- `imagens/destaque.jpg` é usada na página inicial.
-- `imagens/teste.jpg` é usada na seção sobre autoestima.
+Backend, com Java 21 e Maven:
 
-Também atualize o texto `alt` das imagens para descrever as novas fotos.
+```bash
+cd backend
+mvn spring-boot:run
+```
 
-### Serviços e preços
+Sem variáveis, a API usa H2 em memória e cria a barbearia de demonstração `denis`. Teste em `http://localhost:8080/ping` e abra o frontend em `http://localhost:5173/denis`.
 
-Em `servicos.html`, atualize os nomes, as descrições e os preços dos serviços quando forem definidos.
+## Neon
 
-### WhatsApp
+Copie a connection string do Neon e converta somente o começo de `postgresql://` para `jdbc:postgresql://`. Separe usuário e senha nas variáveis indicadas em `backend/.env.example`.
 
-Troque o número `5500000000000` pelos números reais nos links do WhatsApp em `servicos.html` e `agendar.html`.
+## Render
 
-O número deve conter o código do país, o DDD e o número do WhatsApp, sem espaços, parênteses, traços ou sinal de adição.
+- Root Directory: `backend`
+- Runtime: Docker
+- Health Check Path: `/ping`
+- Environment: as variáveis de `backend/.env.example`
+- Em produção, defina `DEMO_TENANT_ENABLED=false` depois que o cadastro administrativo existir.
 
-### Instagram
+## Vercel
 
-Em `sobre.html`, substitua `https://www.instagram.com/` pelo endereço real do Instagram.
+- Root Directory: `frontend`
+- Framework: Vite
+- Environment: `VITE_API_URL=https://sua-api.onrender.com`
+- Adicione a URL final da Vercel em `CORS_ALLOWED_ORIGINS` no Render.
 
-### Endereço e horários
+## Regra de isolamento
 
-Em `sobre.html`, atualize o endereço, os horários de funcionamento e o link do Google Maps.
-
-### Textos institucionais
-
-Revise os textos da página inicial e da página `sobre.html` para que eles reflitam a história, os diferenciais e o atendimento da barbearia.
+O endereço público usa um `slug`, por exemplo `/denis`. A API resolve esse slug para um tenant e todas as leituras e gravações usam o `tenant_id` resolvido no servidor. Quando houver login administrativo, o tenant virá do JWT; nunca será aceito cegamente do corpo da requisição.

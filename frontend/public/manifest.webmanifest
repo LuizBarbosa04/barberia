@@ -1,0 +1,12 @@
+{
+  "name": "Denis Barber",
+  "short_name": "Denis Barber",
+  "description": "Acompanhe a fila da barbearia em tempo real.",
+  "start_url": "/denis",
+  "display": "standalone",
+  "background_color": "#f2eee7",
+  "theme_color": "#17130f",
+  "icons": [
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

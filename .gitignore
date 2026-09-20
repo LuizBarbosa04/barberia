@@ -1,2 +1,7 @@
-
-cloudflared.exe
+frontend/node_modules/
+frontend/dist/
+backend/target/
+.env
+.idea/
+.vscode/
+*.log
