@@ -8,9 +8,19 @@ export const tenant = {
   whatsapp: '5500000000000',
   instagram: '@denisbarber',
   address: 'Rua da Barbearia, 100 — Centro',
+  hours: 'Segunda a sábado · 11h às 19h',
   services: [
     { name: 'Corte', price: 'R$ 25', duration: '30 min', text: 'Clássico, social, degradê ou do seu jeito.' },
     { name: 'Barba', price: 'R$ 20', duration: '25 min', text: 'Contorno, acabamento e cuidado completo.' },
     { name: 'Corte + barba', price: 'R$ 40', duration: '50 min', text: 'O combo completo para sair renovado.' }
+  ],
+  portfolio: [
+    { id: 1, title: 'Degradê com desenho', category: 'Degradê', image: '/imagens/denis.png', position: 'center 72%' },
+    { id: 2, title: 'Acabamento completo', category: 'Corte + barba', image: '/imagens/destaque.jpg', position: 'center' },
+    { id: 3, title: 'Visual renovado', category: 'Social', image: '/imagens/teste.jpg', position: 'center' }
+  ],
+  reviews: [
+    { name: 'Cliente da barbearia', text: 'Atendimento organizado, corte bem feito e sem perder tempo esperando.' },
+    { name: 'Cliente recorrente', text: 'Consigo conferir a fila antes de sair de casa. Ficou muito mais prático.' }
   ]
 }
