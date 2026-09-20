@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { Client } from '@stomp/stompjs'
 import { api } from './api'
 import { tenant as fallbackTenant } from './config/tenant'
+import AdminPage from './AdminPage'
 
 const demoQueue = {
   open: true, paused: false, averageWaitMinutes: 28,
@@ -35,7 +36,7 @@ function Header({ shop, page, navigate }) {
   return <header className="topbar">
     {page ? <button className="back-button" onClick={() => navigate('')}><Icon name="back"/> Voltar</button> : <Brand shop={shop} navigate={navigate}/>} 
     <nav className="desktop-nav"><button onClick={() => navigate('')}>Início</button><button onClick={() => navigate('cortes')}>Cortes</button><button className="nav-primary" onClick={() => navigate('fila')}>VER FILA</button></nav>
-    {page && <span className="route-title">{page === 'fila' ? 'Fila ao vivo' : 'Nossos cortes'}</span>}
+    {page && <span className="route-title">{page === 'fila' ? 'Fila ao vivo' : page === 'cortes' ? 'Nossos cortes' : 'Painel do barbeiro'}</span>}
   </header>
 }
 
@@ -112,7 +113,8 @@ function App() {
     const client = new Client({ brokerURL: websocketUrl, reconnectDelay: 5000, onConnect: () => { setConnected(true); client.subscribe(`/topic/barbershops/${slug}/queue`, message => setQueue(JSON.parse(message.body))) }, onWebSocketClose: () => setConnected(false) })
     client.activate(); return () => client.deactivate()
   }, [slug])
-  return <div className="app-shell"><Header shop={shop} page={page} navigate={navigate}/>{page === 'fila' ? <QueuePage shop={shop} queue={queue} setQueue={setQueue} connected={connected}/> : page === 'cortes' ? <GalleryPage shop={shop}/> : <HomePage shop={shop} queue={queue} connected={connected} navigate={navigate}/>}<footer className="site-footer"><Brand shop={shop} navigate={navigate}/><p>Barbearia, portfólio e fila em um só lugar.</p><small>© {new Date().getFullYear()} {shop.name}</small></footer><BottomNav page={page} navigate={navigate}/>{page !== 'fila' && <button className="floating-queue" onClick={() => navigate('fila')}><span>{queueCount}</span><div><small>FILA AGORA</small><strong>ACOMPANHAR</strong></div><Icon name="arrow"/></button>}</div>
+  const isAdmin = page === 'admin'
+  return <div className="app-shell"><Header shop={shop} page={page} navigate={navigate}/>{page === 'fila' ? <QueuePage shop={shop} queue={queue} setQueue={setQueue} connected={connected}/> : page === 'cortes' ? <GalleryPage shop={shop}/> : isAdmin ? <AdminPage shop={shop} setShop={setShop} queue={queue} setQueue={setQueue} navigate={navigate}/> : <HomePage shop={shop} queue={queue} connected={connected} navigate={navigate}/>} {!isAdmin && <><footer className="site-footer"><Brand shop={shop} navigate={navigate}/><p>Barbearia, portfólio e fila em um só lugar.</p><small>© {new Date().getFullYear()} {shop.name}</small></footer><BottomNav page={page} navigate={navigate}/>{page !== 'fila' && <button className="floating-queue" onClick={() => navigate('fila')}><span>{queueCount}</span><div><small>FILA AGORA</small><strong>ACOMPANHAR</strong></div><Icon name="arrow"/></button>}</>}</div>
 }
 
 export default App
