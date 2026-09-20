@@ -64,7 +64,7 @@ function HomePage({ shop, queue, connected, navigate }) {
       <div className="photo-grid preview">{shop.portfolio.map(item => <button key={item.id} className="photo-card" onClick={() => navigate('cortes')} style={{ backgroundImage: `url(${item.image})`, backgroundPosition: item.position }}><span>{item.category}</span><strong>{item.title}</strong></button>)}</div>
     </section>
 
-    <section className="content-section reviews-section"><div className="section-title"><p className="eyebrow">QUEM CORTA, VOLTA</p><h2>Experiência de verdade.</h2></div><div className="reviews">{shop.reviews.map(review => <blockquote key={review.name}><span>★★★★★</span><p>“{review.text}”</p><footer>{review.name}</footer></blockquote>)}</div></section>
+    <section className="content-section reviews-section"><div className="section-title"><p className="eyebrow">QUEM CORTA, VOLTA</p><h2>Experiência de verdade.</h2></div><div className="reviews">{shop.reviews.map(review => <blockquote key={review.id}><span>★★★★★</span><p>“{review.text}”</p><footer>{review.name}</footer></blockquote>)}</div></section>
 
     <section className="location-section" id="local"><p className="eyebrow">ONDE ENCONTRAR</p><h2>Perto de você.</h2><div className="location-lines"><p><Icon name="pin"/><span>{shop.address}</span></p><p><Icon name="clock"/><span>{shop.hours}</span></p></div><a className="big-action" href={`https://wa.me/${shop.whatsapp}`} target="_blank" rel="noreferrer"><Icon name="phone"/> CHAMAR NO WHATSAPP</a></section>
   </main>
