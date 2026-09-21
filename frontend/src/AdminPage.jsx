@@ -23,7 +23,7 @@ function Login({ onLogin }) {
     if (password !== '1234') return setError('Código demonstrativo incorreto.')
     sessionStorage.setItem('barber-admin-demo', 'true'); onLogin()
   }
-  return <main className="admin-login"><section><span className="admin-logo">DB</span><p className="eyebrow">ÁREA DO BARBEIRO</p><h1>Comande sua fila.</h1><p>Este acesso ainda é demonstrativo. A autenticação segura será conectada ao backend.</p><form onSubmit={submit}><label>E-mail<input type="email" value={email} onChange={event => setEmail(event.target.value)} required/></label><label>Código de acesso<input type="password" value={password} onChange={event => setPassword(event.target.value)} placeholder="Digite 1234" required/></label><button>ENTRAR NO PAINEL</button>{error && <small className="admin-error">{error}</small>}</form><small className="demo-access">Acesso do protótipo: <strong>1234</strong></small></section></main>
+  return <main className="admin-login"><section><span className="admin-logo">DB</span><p className="eyebrow">ÁREA DO BARBEIRO</p><h1>Sua fila.</h1><p>Acesso demonstrativo.</p><form onSubmit={submit}><label>E-mail<input type="email" value={email} onChange={event => setEmail(event.target.value)} required/></label><label>Código<input type="password" value={password} onChange={event => setPassword(event.target.value)} placeholder="Digite 1234" required/></label><button>ENTRAR</button>{error && <small className="admin-error">{error}</small>}</form><small className="demo-access">Código: <strong>1234</strong></small></section></main>
 }
 
 export default function AdminPage({ shop, setShop, queue, setQueue, navigate }) {
@@ -33,6 +33,7 @@ export default function AdminPage({ shop, setShop, queue, setQueue, navigate }) 
   const [hours, setHours] = useState(shop.hours)
   const [completed, setCompleted] = useState(Number(localStorage.getItem('barber-completed-demo') || 0))
   const [message, setMessage] = useState('')
+  const [view, setView] = useState('atendimento')
   const active = useMemo(() => queue.people.find(person => ['CALLED', 'IN_SERVICE'].includes(person.status)), [queue.people])
   const nextWaiting = useMemo(() => queue.people.find(person => person.status === 'WAITING'), [queue.people])
 
@@ -64,8 +65,11 @@ export default function AdminPage({ shop, setShop, queue, setQueue, navigate }) 
   function logout() { sessionStorage.removeItem('barber-admin-demo'); setAuthenticated(false) }
 
   return <main className="admin-page">
-    <section className="admin-welcome"><div><p className="eyebrow">PAINEL DO BARBEIRO</p><h1>Boa, Denis.</h1><p>Organize o atendimento sem perder tempo no WhatsApp.</p></div><button className="admin-logout" onClick={logout}><Icon name="logout"/> SAIR</button></section>
+    <section className="admin-welcome"><div><p className="eyebrow">PAINEL DO BARBEIRO</p><h1>Boa, Denis.</h1><p>{queue.people.length} cliente{queue.people.length === 1 ? '' : 's'} na fila.</p></div><button className="admin-logout" onClick={logout}><Icon name="logout"/> SAIR</button></section>
 
+    <nav className="admin-tabs"><button className={view === 'atendimento' ? 'active' : ''} onClick={() => setView('atendimento')}>ATENDIMENTO</button><button className={view === 'ajustes' ? 'active' : ''} onClick={() => setView('ajustes')}>AJUSTES</button></nav>
+
+    {view === 'atendimento' && <>
     <section className="admin-status-card"><div><i className={queue.open ? 'open' : ''}/><span><small>STATUS DA FILA</small><strong>{!queue.open ? 'Fechada' : queue.paused ? 'Pausada' : 'Aberta e recebendo clientes'}</strong></span></div><div className="admin-status-actions"><button className={queue.open && !queue.paused ? 'selected' : ''} onClick={() => setQueue(current => ({ ...current, open: true, paused: false }))}>ABRIR</button><button className={queue.paused ? 'selected' : ''} onClick={() => setQueue(current => ({ ...current, open: true, paused: true }))}><Icon name="pause"/> PAUSAR</button><button className={!queue.open ? 'selected danger' : ''} onClick={() => setQueue(current => ({ ...current, open: false, paused: false }))}>FECHAR</button></div></section>
 
     <section className="admin-metrics"><article><Icon name="users"/><div><strong>{queue.people.length}</strong><span>na fila agora</span></div></article><article><Icon name="clock"/><div><strong>~{queue.averageWaitMinutes}</strong><span>min de espera</span></div></article><article><Icon name="check"/><div><strong>{completed}</strong><span>finalizados hoje</span></div></article></section>
@@ -80,10 +84,13 @@ export default function AdminPage({ shop, setShop, queue, setQueue, navigate }) 
 
       <article className="admin-queue-list"><div className="admin-card-heading"><div><small>ORDEM DE CHEGADA</small><h2>Fila de hoje</h2></div><span>{queue.people.length}</span></div><ol>{queue.people.map(person => <li key={person.id}><span>{person.position}</span><div><strong>{person.displayName}</strong><small>{person.status === 'WAITING' ? 'Aguardando' : person.status === 'CALLED' ? 'Chamado' : 'Em atendimento'}</small></div><button onClick={() => removePerson(person.id)} aria-label={`Remover ${person.displayName}`}>×</button></li>)}</ol><form className="walk-in-form" onSubmit={addWalkIn}><input value={walkInName} onChange={event => setWalkInName(event.target.value)} placeholder="Nome do cliente presencial"/><button>+ ADICIONAR</button></form></article>
 
-      <article className="admin-settings"><div className="admin-card-heading"><div><small>INFORMAÇÃO PÚBLICA</small><h2>Aviso do dia</h2></div></div><form onSubmit={saveSettings}><label>Aviso<textarea value={notice} onChange={event => setNotice(event.target.value)} maxLength="240"/></label><label>Horário exibido<input value={hours} onChange={event => setHours(event.target.value)}/></label><button>SALVAR ALTERAÇÕES</button></form></article>
-
-      <article className="admin-gallery"><div className="admin-card-heading"><div><small>PORTFÓLIO</small><h2>Fotos dos cortes</h2></div><span>{shop.portfolio.length}</span></div><div className="admin-thumbs">{shop.portfolio.slice(-4).map(photo => <img key={photo.id} src={photo.image} alt=""/>)}<label className="add-photo"><Icon name="photo"/><span>ADICIONAR FOTO</span><input type="file" accept="image/*" onChange={addPhoto}/></label></div></article>
     </section>
+    </>}
+
+    {view === 'ajustes' && <section className="admin-grid admin-settings-grid">
+      <article className="admin-settings"><div className="admin-card-heading"><div><small>PÁGINA DO CLIENTE</small><h2>Aviso e horário</h2></div></div><form onSubmit={saveSettings}><label>Aviso<textarea value={notice} onChange={event => setNotice(event.target.value)} maxLength="240"/></label><label>Horário<input value={hours} onChange={event => setHours(event.target.value)}/></label><button>SALVAR</button></form></article>
+      <article className="admin-gallery"><div className="admin-card-heading"><div><small>PORTFÓLIO</small><h2>Fotos dos cortes</h2></div><span>{shop.portfolio.length}</span></div><div className="admin-thumbs">{shop.portfolio.slice(-4).map(photo => <img key={photo.id} src={photo.image} alt=""/>)}<label className="add-photo"><Icon name="photo"/><span>ADICIONAR FOTO</span><input type="file" accept="image/*" onChange={addPhoto}/></label></div></article>
+    </section>}
 
     <button className="preview-public" onClick={() => navigate('')}>VER PÁGINA DO CLIENTE</button>
   </main>
